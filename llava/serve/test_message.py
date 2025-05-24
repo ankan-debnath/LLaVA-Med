@@ -18,7 +18,7 @@ def main():
         print(f"Models: {models}")
 
         ret = requests.post(controller_addr + "/get_worker_address",
-            json={"model": args.model_name})
+            json={"llava_med": args.model_name})
         worker_addr = ret.json()["address"]
         print(f"worker_addr: {worker_addr}")
 
@@ -31,7 +31,7 @@ def main():
 
     headers = {"User-Agent": "LLaVA Client"}
     pload = {
-        "model": args.model_name,
+        "llava_med": args.model_name,
         "prompt": prompt,
         "max_new_tokens": args.max_new_tokens,
         "temperature": 0.7,
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--controller-address", type=str, default="http://localhost:21001")
     parser.add_argument("--worker-address", type=str)
-    parser.add_argument("--model-name", type=str, default="facebook/opt-350m")
+    parser.add_argument("--llava_med-name", type=str, default="facebook/opt-350m")
     parser.add_argument("--max-new-tokens", type=int, default=256)
     parser.add_argument("--message", type=str, default=
         "Tell me a story with more than 1000 words.")

@@ -191,9 +191,9 @@ class Controller:
             self.remove_worker(worker_name)
 
     def worker_api_generate_stream(self, params):
-        worker_addr = self.get_worker_address(params["model"])
+        worker_addr = self.get_worker_address(params["llava_med"])
         if not worker_addr:
-            logger.info(f"no worker: {params['model']}")
+            logger.info(f"no worker: {params['llava_med']}")
             ret = {
                 "text": server_error_msg,
                 "error_code": 2,
@@ -261,7 +261,7 @@ async def list_models():
 @app.post("/get_worker_address")
 async def get_worker_address(request: Request):
     data = await request.json()
-    addr = controller.get_worker_address(data["model"])
+    addr = controller.get_worker_address(data["llava_med"])
     return {"address": addr}
 
 

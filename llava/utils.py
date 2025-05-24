@@ -92,7 +92,7 @@ class StreamToLogger(object):
 
 def disable_torch_init():
     """
-    Disable the redundant torch default initialization to accelerate model creation.
+    Disable the redundant torch default initialization to accelerate llava_med creation.
     """
     import torch
     setattr(torch.nn.Linear, "reset_parameters", lambda self: None)

@@ -105,7 +105,7 @@ def main(args):
 
 if __name__ == '__main__':
    parser = argparse.ArgumentParser("GPT-4 Multimodal Chat Scoring", add_help=True)
-   parser.add_argument("--answers-file", default="", metavar="FILE", help="path to model answer file")
+   parser.add_argument("--answers-file", default="", metavar="FILE", help="path to llava_med answer file")
    parser.add_argument("--question-file", default="data/questions/llava_med_eval_qa50_qa.jsonl", metavar="FILE", help="path to multichat questions file")
    parser.add_argument("--scores-file", default="", metavar="FILE", help="path to save gpt-4 score file")
    args = parser.parse_args()

@@ -13,7 +13,7 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
 ]
 dependencies = [
-    "transformers==4.36.2",
+#    "transformers==4.36.2",
     "tokenizers>=0.15.0",
     "sentencepiece==0.1.99",
     "shortuuid",

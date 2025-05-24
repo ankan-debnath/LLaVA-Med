@@ -1,5 +1,5 @@
 """
-A model worker executes the model.
+A llava_med worker executes the llava_med.
 """
 import argparse
 import asyncio
@@ -61,7 +61,7 @@ class ModelWorker:
             self.model_name = model_name
 
         self.device = device
-        logger.info(f"Loading the model {self.model_name} on worker {worker_id} ...")
+        logger.info(f"Loading the llava_med {self.model_name} on worker {worker_id} ...")
         self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
             model_path, model_base, self.model_name, load_8bit, load_4bit, device=self.device)
         self.is_multimodal = 'llava' in self.model_name.lower()
@@ -256,12 +256,12 @@ if __name__ == "__main__":
         default="http://localhost:21002")
     parser.add_argument("--controller-address", type=str,
         default="http://localhost:21001")
-    parser.add_argument("--model-path", type=str, default="facebook/opt-350m")
-    parser.add_argument("--model-base", type=str, default=None)
-    parser.add_argument("--model-name", type=str)
+    parser.add_argument("--llava_med-path", type=str, default="facebook/opt-350m")
+    parser.add_argument("--llava_med-base", type=str, default=None)
+    parser.add_argument("--llava_med-name", type=str)
     parser.add_argument("--device", type=str, default="cuda")
-    parser.add_argument("--multi-modal", action="store_true", help="Multimodal mode is automatically detected with model name, please make sure `llava` is included in the model path.")
-    parser.add_argument("--limit-model-concurrency", type=int, default=5)
+    parser.add_argument("--multi-modal", action="store_true", help="Multimodal mode is automatically detected with llava_med name, please make sure `llava` is included in the llava_med path.")
+    parser.add_argument("--limit-llava_med-concurrency", type=int, default=5)
     parser.add_argument("--stream-interval", type=int, default=1)
     parser.add_argument("--no-register", action="store_true")
     parser.add_argument("--load-8bit", action="store_true")
@@ -270,7 +270,7 @@ if __name__ == "__main__":
     logger.info(f"args: {args}")
 
     if args.multi_modal:
-        logger.warning("Multimodal mode is automatically detected with model name, please make sure `llava` is included in the model path.")
+        logger.warning("Multimodal mode is automatically detected with llava_med name, please make sure `llava` is included in the llava_med path.")
 
     worker = ModelWorker(args.controller_address,
                          args.worker_address,

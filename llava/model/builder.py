@@ -25,7 +25,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
         kwargs['torch_dtype'] = torch.float16
     
     if 'llava' in model_name.lower():
-        # Load LLaVA model
+        # Load LLaVA llava_med
             if 'mistral' in model_name.lower():
                 tokenizer = AutoTokenizer.from_pretrained(model_path)
                 model = LlavaMistralForCausalLM.from_pretrained(
@@ -35,9 +35,9 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                     **kwargs
                 )
     else:
-        # Load language model
+        # Load language llava_med
         if model_base is not None:
-            # PEFT model
+            # PEFT llava_med
             from peft import PeftModel
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=False)
             model = AutoModelForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, **kwargs)

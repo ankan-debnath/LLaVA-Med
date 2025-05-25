@@ -1,10 +1,12 @@
 # 1. Import your utility functions
 from llava.mm_utils import process_images, tokenizer_image_token  # assuming your code is saved as utils.py
-from .model_loader import tokenizer, model, image_processor, context_len
+from .model_loader import get_model_components
 from llava.conversation import conv_templates
 import torch
 
 from PIL import Image
+
+tokenizer, model, image_processor, context_len = get_model_components()
 
 
 # 2. Load and preprocess the image

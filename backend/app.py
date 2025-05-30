@@ -41,13 +41,9 @@ def chatbot():
 
 
 
-
     # history_str = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in chat_history])
 
     # response = get_response(message, history_str)
     # print(response)
 
     return jsonify( { 'response' : med_responces } )
-
-if __name__ == "__main__":
-    app.run(debug=False, port=5000)

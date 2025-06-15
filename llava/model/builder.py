@@ -33,8 +33,22 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                     low_cpu_mem_usage=True,
                     trust_remote_code=True,
                     use_flash_attention_2=False,
+                    return_dict=True,
+                    output_loading_info=True,
                     **kwargs
                 )
+                # Now check for missing or unexpected keys
+                missing_keys = model._load_result.missing_keys
+                unexpected_keys = model._load_result.unexpected_keys
+
+                if not missing_keys and not unexpected_keys:
+                    print("✅ All model weights loaded successfully!")
+                else:
+                    print("⚠️ Some weights were not loaded:")
+                    if missing_keys:
+                        print("Missing keys:", missing_keys)
+                    if unexpected_keys:
+                        print("Unexpected keys:", unexpected_keys)
     else:
         # Load language llava_med
         if model_base is not None:

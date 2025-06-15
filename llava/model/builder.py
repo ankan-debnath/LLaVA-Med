@@ -33,8 +33,6 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                     low_cpu_mem_usage=True,
                     trust_remote_code=True,
                     use_flash_attention_2=False,
-                    return_dict=True,
-                    output_loading_info=True,
                     **kwargs
                 )
     else:

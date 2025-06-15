@@ -30,7 +30,6 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                 tokenizer = AutoTokenizer.from_pretrained(model_path)
                 model = LlavaMistralForCausalLM.from_pretrained(
                     model_path,
-                    torch_dtype=torch.bfloat16,
                     low_cpu_mem_usage=True,
                     trust_remote_code=True,
                     use_flash_attention_2=False,

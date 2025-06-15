@@ -48,8 +48,8 @@ def generate_response(input_ids, attention_mask, image_tensor=None):
             inputs=input_ids,
             attention_mask=attention_mask,
             images=image_tensor,
-            max_new_tokens=512,
-            do_sample=True,
+            max_new_tokens=128,
+            do_sample=False,
             temperature=0.2,
             top_p=0.95
         )
